@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SandPlay — Zen garden in your pocket</title>
+  <meta name="description" content="A peaceful, endlessly creative sand experience that encourages reflection, imagination, and playful exploration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="SandPlay home">
+      <img class="brand-mark" src="assets/logo-mark.svg" alt="" />
+      <img class="brand-wordmark" src="assets/wordmark.svg" alt="SandPlay" />
+    </a>
+    <a class="cta" href="#">Download on the App Store</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">REDUCE STRESS</p>
+        <h1 class="hero-title">Zen garden in your pocket</h1>
+      </div>
+      <img class="hero-phone" src="assets/phone.png" alt="SandPlay running on an iPhone, showing patterns drawn in orange sand" />
+      <div class="hero-text">
+        <p class="hero-eyebrow">ENCOURAGE PLAY</p>
+        <p class="hero-title">Live everyday at the beach</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section features">
+      <div class="block">
+        <header class="section-header">
+          <p class="eyebrow">GRANULAR MEDIUM</p>
+          <h2 class="section-title">Calm, Creative, Everyday Play</h2>
+          <p class="section-lede">A peaceful, endlessly creative sand experience that encourages reflection, imagination, and playful exploration.</p>
+        </header>
+
+        <div class="feature-cards">
+          <article class="card">
+            <img class="icon-badge" src="assets/icon-calm.svg" alt="" />
+            <h3 class="card-title">Calm, Simplicity, and Space</h3>
+            <p class="card-body">The Japanese use zen gardens for what they call Shizukesa - (quietness) creating conditions of stillness and reflection.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge icon-badge--fill"><img src="assets/icon-infinite.svg" alt="" /></span>
+            <h3 class="card-title">Infinite Creative Options</h3>
+            <p class="card-body">Adjust depth, moisture, illumination, tool size, sand color, and much more.</p>
+          </article>
+          <article class="card">
+            <span class="icon-badge icon-badge--fill"><img src="assets/icon-gesture.svg" alt="" /></span>
+            <h3 class="card-title card-title--sm">Play Everyday</h3>
+            <p class="card-body">Sand is the endless creative medium that puts smiles on faces. It fosters imagination in unique and engaging ways.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="block">
+        <header class="section-header">
+          <p class="eyebrow">DIGITAL SIMULATION</p>
+          <h2 class="section-title">As real as it gets.</h2>
+          <p class="section-lede">By studying how real sand flows, piles, shifts, and settles, we have created a digital simulation that behaves with surprisingly lifelike realism.</p>
+        </header>
+        <video class="demo" src="assets/sand-demo.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="Sand drawing demo"></video>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <header class="section-header">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">Common questions</h2>
+      </header>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3 class="faq-q">What tools are available?</h3>
+          <p class="faq-a">Finger, Rake, Footprint, and Stones. (More coming soon) Each leaves a different mark in the sand. You can also constrain your stroke to a circle, a straight line, or leave it free.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q">Does it work with Apple’s Pencil?</h3>
+          <p class="faq-a">Yes. The Apple Pencil works great on supporting iPads by manipulating the sand naturally, allowing you to carve, shape, rake, create footprints, and move rocks across its surface. Realistic sand physics make the grains pile, shift, slide, and settle in response to every touch, creating an experience that feels remarkably like playing with real sand.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-q">Can I save and share my work?</h3>
+          <p class="faq-a">Yes, open the drawer from the dock and tap Save to Photos or Share. SandPlay.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p class="footer-brand">SandPlay</p>
+      <p class="footer-tag">Reduce Stress - Encourage Play</p>
+      <p class="footer-copy">© 2026 All rights reserved.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:support@sand-play.com?subject=SandPlay%20Support">Support</a>
+    </nav>
+  </footer>
+
+  <script>
+    // Loop the demo whenever any part of it is on screen.
+    (function () {
+      var video = document.querySelector(".demo");
+      video.muted = true; // browsers only autoplay muted video
+      video.defaultMuted = true;
+
+      function onScreen() {
+        var r = video.getBoundingClientRect();
+        return r.bottom > 0 && r.top < (window.innerHeight || 0) && r.width > 0;
+      }
+
+      function tick() {
+        if (onScreen()) {
+          if (video.paused) {
+            var p = video.play();
+            if (p && p.catch) p.catch(function () {});
+          }
+        } else if (!video.paused) {
+          video.pause();
+        }
+      }
+
+      ["scroll", "resize", "orientationchange", "visibilitychange", "pageshow", "touchstart", "click"].forEach(
+        function (evt) {
+          addEventListener(evt, tick, { passive: true });
+        }
+      );
+      ["loadeddata", "canplay", "stalled", "suspend"].forEach(function (evt) {
+        video.addEventListener(evt, tick);
+      });
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(tick, { threshold: 0 }).observe(video);
+      }
+
+      setInterval(tick, 1000); // last-resort catch-all
+      tick();
+    })();
+  </script>
+</body>
+</html>
